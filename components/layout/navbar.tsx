@@ -20,7 +20,7 @@ export const Navbar = () => {
     <HeroUINavbar
       maxWidth="xl"
       position="sticky"
-      className="border-b border-zinc-100 dark:border-zinc-800/50 backdrop-blur-md bg-background-light/80 dark:bg-primary-dark/80"
+      className="border-b border-zinc-100 dark:border-zinc-700/50 backdrop-blur-md bg-background-light/80"
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
@@ -36,14 +36,16 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent justify="center">
-        <ul className="hidden lg:flex gap-4 justify-center ml-2">
+        <ul className="hidden lg:flex gap-6 justify-center ml-2">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
                 className={`
                   relative
                   text-sm
-                  font-semibold
+                  font-medium
+                  text-slate-600
+                  dark:text-white
                   data-[active=true]:text-primary
                   data-[active=true]:font-bold
                   transition-colors

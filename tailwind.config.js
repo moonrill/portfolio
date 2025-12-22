@@ -14,6 +14,9 @@ const config = {
         mono: ['var(--font-mono)'],
         manrope: ['var(--font-manrope)'],
       },
+      borderRadius: {
+        '5xl': '3rem',
+      },
     },
   },
   darkMode: 'class',
@@ -32,7 +35,7 @@ const config = {
           colors: {
             primary: {
               DEFAULT: '#46ec13',
-              dark: '#142210',
+              dark: '#08130C',
             },
           },
         },
