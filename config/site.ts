@@ -9,12 +9,12 @@ export const siteConfig = {
       href: '/',
     },
     {
-      label: 'Projects',
-      href: '/projects',
-    },
-    {
       label: 'Tech Stack',
       href: '/tech-stack',
+    },
+    {
+      label: 'Projects',
+      href: '/projects',
     },
     {
       label: 'Blog',
@@ -31,12 +31,12 @@ export const siteConfig = {
       href: '/',
     },
     {
-      label: 'Projects',
-      href: '/projects',
-    },
-    {
       label: 'Tech Stack',
       href: '/tech-stack',
+    },
+    {
+      label: 'Projects',
+      href: '/projects',
     },
     {
       label: 'Blog',

@@ -2,11 +2,14 @@ import { Button } from '@heroui/button';
 import { button as buttonStyles } from '@heroui/theme';
 import Link from 'next/link';
 import { FaDocker, FaDownload, FaGolang, FaNodeJs } from 'react-icons/fa6';
+import { HiCodeBracketSquare, HiWrenchScrewdriver } from 'react-icons/hi2';
+import { IoCalendar } from 'react-icons/io5';
 import { LuAtom } from 'react-icons/lu';
 import { MdRocketLaunch, MdSecurity, MdTerminal } from 'react-icons/md';
 import { RiTailwindCssFill } from 'react-icons/ri';
 import { SiNestjs } from 'react-icons/si';
 import TechBadge from '../reusable/tech-badge';
+import StatsCard from './stats-card';
 import TerminalGreet from './terminal';
 
 const Hero = () => {
@@ -45,7 +48,7 @@ const Hero = () => {
                 <MdRocketLaunch className="text-xl" />
                 View Projects
               </Link>
-              <Button className="h-12 px-8 rounded-full border-2 border-zinc-200 dark:border-zinc-700 hover:border-primary dark:hover:border-primary bg-transparent font-bold text-base hover:text-primary transition-colors flex duration-300 items-center gap-2">
+              <Button className="h-12 px-8 rounded-full text-zinc-700 dark:text-zinc-100 border-2 border-zinc-200 dark:border-zinc-700 hover:border-primary dark:hover:border-primary bg-transparent font-bold text-base hover:text-primary dark:hover:text-primary transition-colors flex duration-300 items-center gap-2">
                 <FaDownload />
                 Download CV
               </Button>
@@ -105,6 +108,19 @@ const Hero = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="mt-16 lg:mt-24 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <StatsCard icon={IoCalendar} title="Years Experience" value="2+" />
+          <StatsCard
+            icon={HiCodeBracketSquare}
+            title="Web & Backend Projects"
+            value="5+"
+          />
+          <StatsCard
+            icon={HiWrenchScrewdriver}
+            title="Technologies Used"
+            value="10+"
+          />
         </div>
       </div>
     </section>
