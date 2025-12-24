@@ -8,8 +8,8 @@ import { LuAtom } from 'react-icons/lu';
 import { MdRocketLaunch, MdSecurity, MdTerminal } from 'react-icons/md';
 import { RiTailwindCssFill } from 'react-icons/ri';
 import { SiNestjs } from 'react-icons/si';
-import TechBadge from '../reusable/tech-badge';
 import StatsCard from './stats-card';
+import TechBadge from './tech-badge';
 import TerminalGreet from './terminal';
 
 /**
@@ -56,7 +56,7 @@ const Hero = () => {
                 <MdRocketLaunch className="text-xl" />
                 View Projects
               </Link>
-              <Button className="h-12 px-8 rounded-full text-zinc-700 dark:text-zinc-100 border-2 border-zinc-200 dark:border-zinc-700 hover:border-primary dark:hover:border-primary bg-transparent font-bold text-base hover:text-primary dark:hover:text-primary transition-colors flex duration-300 items-center gap-2">
+              <Button className="h-12 px-8 rounded-full text-zinc-700 dark:text-zinc-100 border-2 border-zinc-300 sm:border-zinc-200 dark:border-zinc-700 hover:border-primary dark:hover:border-primary bg-transparent font-bold text-base hover:text-primary dark:hover:text-primary transition-colors flex duration-300 items-center gap-2">
                 <FaDownload />
                 Download CV
               </Button>
@@ -100,7 +100,7 @@ const Hero = () => {
               <img
                 alt="Abstract geometric dark liquid forms representing code structure"
                 className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700 ease-out"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9xoeP5mfbMoNn8FZlqG15BH9yzADfdddqyBymyHn0W8DOE1vQwEAIXtb6B53hNhbcOUnKsy0WfxsUH34we4owpdB56CyAqSWLWYOyoXjIIUZijCvHYSUXSvUF1zFG_BpARjzRJjsLSC2t-7kN-2Md44gjbagjIsNLgB6_paFYaZHoTS2mOFWQGNxLa5BzrKoRtwNqAGvPiwftCl3Y6dCRtvN7hTY5SF00jgeGhJU4LfHMxkIWw6dAh3t1PoFahKXyrxONonG-atGB"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9xoeP5mfbMoNn8FZlqG15BH9yzADfdddqyBymyHn0W8DOE1vQwEAIXtb6B53hNhbcOUnKsy0WfxsUH34we4owpdB56CyAqSWLWYOyoXjIIUZijCvHYSUXSvUF1zFG_BpARjzRJjsLSC2t-7kN-2Md44gjbagjIsNLgB6_paFYaZHoTS2mOFWQGNxLa5BzrKoRtwNqAGvPiwftCl3Y6dCRtvN7hTY5SF08jgeGhJU4LfHMxkIWw6dAh3t1PoFahKXyrxONonG-atGB"
               />
               <div className="absolute bottom-6 left-6 right-6 z-20">
                 <div className="bg-background-dark/90 backdrop-blur-md p-4 rounded-4xl border border-zinc-700 flex items-center gap-4">

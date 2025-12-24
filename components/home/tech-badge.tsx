@@ -57,7 +57,7 @@ const TechBadge = ({ text, href, icon: Icon }: TechBadgeProps) => {
       ref={badgeRef}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className="px-4 py-2 rounded-full text-slate-600 dark:text-slate-100 dark:bg-zinc-800/50 border border-zinc-300 dark:border-zinc-700 text-base font-semibold flex items-center gap-2 hover:border-primary transition-colors cursor-pointer hover:text-primary dark:hover:text-primary"
+      className="px-4 py-2 rounded-full text-slate-600 bg-default-50 sm:bg-transparent dark:text-slate-100 dark:bg-zinc-800/50 border border-zinc-300 dark:border-zinc-700 text-base font-semibold flex items-center gap-2 hover:border-primary transition-colors cursor-pointer hover:text-primary dark:hover:text-primary"
     >
       {/* Renders the icon for the badge. 🎨 */}
       <Icon className="text-[18px]" />

@@ -1,10 +1,19 @@
+'use client';
+
 import { Button } from '@heroui/button';
 import { Divider } from '@heroui/divider';
 import { Input } from '@heroui/input';
 import { Link } from '@heroui/link';
-import React from 'react';
+import { useTheme } from 'next-themes';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
+import { IconType } from 'react-icons';
 import { FaPaperPlane } from 'react-icons/fa6';
 import { MdMail, MdTerminal } from 'react-icons/md';
+
+import { siteConfig } from '@/config/site';
+import { socialItems } from '@/const/social';
+import { SocialItem as SocialItemType } from '@/types/footer';
 
 /**
  * Footer is the main footer for the application.
@@ -12,6 +21,8 @@ import { MdMail, MdTerminal } from 'react-icons/md';
  * @returns {JSX.Element} The rendered Footer component.
  */
 const Footer: React.FC = () => {
+  const pathname = usePathname();
+
   return (
     <footer className="relative mt-16 border-t border-divider bg-background/60 backdrop-blur-xl">
       {/* top gradient line */}
@@ -46,7 +57,7 @@ const Footer: React.FC = () => {
                 startContent={<MdMail className="text-foreground/50 text-lg" />}
                 classNames={{
                   inputWrapper:
-                    'bg-default-100 data-[hover=true]:bg-default-200',
+                    'bg-white shadow-none sm:bg-default-100 data-[hover=true]:bg-default-200',
                 }}
               />
               <Button isIconOnly color="primary" radius="full" variant="shadow">
@@ -62,14 +73,27 @@ const Footer: React.FC = () => {
             </h3>
 
             <ul className="space-y-4">
-              {['Home', 'Projects', 'About', 'Contact'].map((item) => (
-                <li key={item}>
+              {siteConfig.navItems.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href="#"
-                    color="foreground"
-                    className="text-sm text-foreground/70 hover:text-primary transition-colors"
+                    href={item.href}
+                    color={
+                      item.href === '/'
+                        ? pathname === item.href
+                          ? 'primary'
+                          : 'foreground'
+                        : pathname.startsWith(item.href)
+                          ? 'primary'
+                          : 'foreground'
+                    }
+                    className="text-sm text-foreground/70 hover:text-primary transition-colors data-[active=true]:text-primary data-[active=true]:font-bold"
+                    data-active={
+                      item.href === '/'
+                        ? pathname === item.href
+                        : pathname.startsWith(item.href)
+                    }
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -83,10 +107,16 @@ const Footer: React.FC = () => {
             </h3>
 
             <div className="grid grid-cols-2 gap-3">
-              <SocialItem label="GitHub" code="GH" />
-              <SocialItem label="LinkedIn" code="LI" />
-              <SocialItem label="Twitter" code="TW" />
-              <SocialItem label="Email" icon />
+              {socialItems.map((item: SocialItemType) => (
+                <SocialItem
+                  key={item.label}
+                  label={item.label}
+                  href={item.href}
+                  icon={item.icon}
+                  hoverColor={item.hoverColor}
+                  darkHoverColor={item.darkHoverColor}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -126,36 +156,49 @@ export default Footer;
  * Interface for the props of the SocialItem component.
  * @interface SocialItemProps
  * @property {string} label - The label for the social media link.
- * @property {string} [code] - The code for the social media link.
- * @property {boolean} [icon] - Whether to display an icon instead of a code.
+ * @property {string} href - The URL to link to.
+ * @property {IconType} icon - The icon to display.
+ * @property {string} hoverColor - The color to use on hover in light mode.
+ * @property {string} [darkHoverColor] - The color to use on hover in dark mode, if different.
  */
 interface SocialItemProps {
   label: string;
-  code?: string;
-  icon?: boolean;
+  href: string;
+  icon: IconType;
+  hoverColor: string;
+  darkHoverColor?: string;
 }
 
 /**
- * SocialItem is a component that displays a social media link with a label and either a code or an icon.
+ * SocialItem is a component that displays a social media link with a label and an icon.
  * @param {SocialItemProps} props - The props for the component.
  * @returns {JSX.Element} The rendered SocialItem component.
  */
-const SocialItem: React.FC<SocialItemProps> = ({ label, code, icon }) => {
+const SocialItem: React.FC<SocialItemProps> = ({
+  label,
+  href,
+  icon: Icon,
+  hoverColor,
+  darkHoverColor,
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
+
+  // Determine the effective hover color based on theme
+  const effectiveHoverColor =
+    theme === 'dark' && darkHoverColor ? darkHoverColor : hoverColor;
+
   return (
     <Link
-      href="#"
-      className="flex items-center gap-3 rounded-xl border border-divider bg-default-50 p-3 transition-all hover:border-primary/50 hover:shadow-md"
+      href={href}
+      className="flex items-center gap-3 rounded-xl border border-divider bg-default-50 sm:bg-transparent dark:bg-default-50 p-3 transition-all hover:border-primary/60 hover:shadow-md"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Renders either an icon or a code for the social media link. 🎨 */}
-      {icon ? (
-        <MdMail className="text-lg text-foreground/60" />
-      ) : (
-        <span className="rounded-md bg-default-200 px-1.5 py-0.5 font-mono text-xs font-bold text-foreground/60">
-          {code}
-        </span>
-      )}
-
-      {/* Renders the label for the social media link. 📝 */}
+      <Icon
+        className="text-lg text-foreground/60 transition-colors duration-200"
+        style={{ color: isHovered ? effectiveHoverColor : '' }}
+      />
       <span className="text-sm font-semibold text-foreground/70">{label}</span>
     </Link>
   );

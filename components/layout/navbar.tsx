@@ -1,3 +1,5 @@
+'use client';
+
 import { Link } from '@heroui/link';
 import {
   Navbar as HeroUINavbar,
@@ -10,9 +12,11 @@ import {
 } from '@heroui/navbar';
 import { button as buttonStyles } from '@heroui/theme';
 import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
+import { useState } from 'react';
 import { MdTerminal } from 'react-icons/md';
 
 /**
@@ -21,11 +25,16 @@ import { MdTerminal } from 'react-icons/md';
  * @returns {JSX.Element} The rendered Navbar component.
  */
 export const Navbar = () => {
+  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <HeroUINavbar
       maxWidth="xl"
       position="sticky"
       className="border-b border-zinc-100 dark:border-zinc-700/50 backdrop-blur-md bg-background-light/80"
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         {/* The brand logo and name. 🎨 */}
@@ -52,8 +61,8 @@ export const Navbar = () => {
                   text-sm
                   font-medium
                   text-slate-600
-                  dark:text-white
                   data-[active=true]:text-primary
+                  dark:data-[active=true]:text-primary
                   data-[active=true]:font-bold
                   transition-colors
                   duration-300
@@ -68,9 +77,11 @@ export const Navbar = () => {
                   after:duration-300
                   hover:after:w-full
                   hover:text-primary
+                  dark:text-white
                   `}
                 color="foreground"
                 href={item.href}
+                data-active={item.href === '/' ? pathname === item.href : pathname.startsWith(item.href)}
               >
                 {item.label}
               </NextLink>
@@ -115,9 +126,18 @@ export const Navbar = () => {
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={index === 0 ? 'primary' : 'foreground'}
-                href="#"
+                color={
+                  item.href === '/'
+                    ? pathname === item.href
+                      ? 'primary'
+                      : 'foreground'
+                    : pathname.startsWith(item.href)
+                    ? 'primary'
+                    : 'foreground'
+                }
+                href={item.href}
                 size="lg"
+                onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </Link>
