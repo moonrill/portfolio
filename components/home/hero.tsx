@@ -12,6 +12,11 @@ import TechBadge from '../reusable/tech-badge';
 import StatsCard from './stats-card';
 import TerminalGreet from './terminal';
 
+/**
+ * Hero is the main hero section for the home page.
+ * It displays the main heading, a brief introduction, call-to-action buttons, and a set of technology badges.
+ * @returns {JSX.Element} The rendered Hero component.
+ */
 const Hero = () => {
   return (
     <section className="flex-grow flex flex-col justify-center relative">
@@ -21,6 +26,7 @@ const Hero = () => {
           <div className="flex flex-col gap-8">
             <TerminalGreet />
             <div className="space-y-4">
+              {/* Main Heading */}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
                 Fullstack
                 <br />
@@ -28,12 +34,14 @@ const Hero = () => {
                   Developer
                 </span>
               </h1>
+              {/* Introduction Text */}
               <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-400 max-w-lg leading-relaxed">
                 I'm a Fullstack Developer specializing in modern web
                 technologies and robust backend systems. Turning coffee into
                 clean code.
               </p>
             </div>
+            {/* Call-to-action buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
                 href={'#'}
@@ -53,6 +61,7 @@ const Hero = () => {
                 Download CV
               </Button>
             </div>
+            {/* Technology Badges */}
             <div className="flex flex-wrap gap-2 pt-4">
               <TechBadge text="React" icon={LuAtom} href="https://react.dev/" />
               <TechBadge
@@ -91,7 +100,7 @@ const Hero = () => {
               <img
                 alt="Abstract geometric dark liquid forms representing code structure"
                 className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700 ease-out"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9xoeP5mfbMoNn8FZlqG15BH9yzADfdddqyBymyHn0W8DOE1vQwEAIXtb6B53hNhbcOUnKsy0WfxsUH34we4owpdB56CyAqSWLWYOyoXjIIUZijCvHYSUXSvUF1zFG_BpARjzRJjsLSC2t-7kN-2Md44gjbagjIsNLgB6_paFYaZHoTS2mOFWQGNxLa5BzrKoRtwNqAGvPiwftCl3Y6dCRtvN7hTY5SF08jgeGhJU4LfHMxkIWw6dAh3t1PoFahKXyrxONonG-atGB"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9xoeP5mfbMoNn8FZlqG15BH9yzADfdddqyBymyHn0W8DOE1vQwEAIXtb6B53hNhbcOUnKsy0WfxsUH34we4owpdB56CyAqSWLWYOyoXjIIUZijCvHYSUXSvUF1zFG_BpARjzRJjsLSC2t-7kN-2Md44gjbagjIsNLgB6_paFYaZHoTS2mOFWQGNxLa5BzrKoRtwNqAGvPiwftCl3Y6dCRtvN7hTY5SF00jgeGhJU4LfHMxkIWw6dAh3t1PoFahKXyrxONonG-atGB"
               />
               <div className="absolute bottom-6 left-6 right-6 z-20">
                 <div className="bg-background-dark/90 backdrop-blur-md p-4 rounded-4xl border border-zinc-700 flex items-center gap-4">
@@ -109,6 +118,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        {/* Stats Cards */}
         <div className="mt-16 lg:mt-24 grid grid-cols-1 md:grid-cols-3 gap-4">
           <StatsCard icon={IoCalendar} title="Years Experience" value="2+" />
           <StatsCard

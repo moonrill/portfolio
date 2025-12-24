@@ -6,6 +6,11 @@ import React from 'react';
 import { FaPaperPlane } from 'react-icons/fa6';
 import { MdMail, MdTerminal } from 'react-icons/md';
 
+/**
+ * Footer is the main footer for the application.
+ * It displays the brand, a newsletter subscription form, navigation links, social media links, and a bottom bar.
+ * @returns {JSX.Element} The rendered Footer component.
+ */
 const Footer: React.FC = () => {
   return (
     <footer className="relative mt-16 border-t border-divider bg-background/60 backdrop-blur-xl">
@@ -117,18 +122,31 @@ export default Footer;
 
 /* ---------- SOCIAL ITEM ---------- */
 
+/**
+ * Interface for the props of the SocialItem component.
+ * @interface SocialItemProps
+ * @property {string} label - The label for the social media link.
+ * @property {string} [code] - The code for the social media link.
+ * @property {boolean} [icon] - Whether to display an icon instead of a code.
+ */
 interface SocialItemProps {
   label: string;
   code?: string;
   icon?: boolean;
 }
 
+/**
+ * SocialItem is a component that displays a social media link with a label and either a code or an icon.
+ * @param {SocialItemProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered SocialItem component.
+ */
 const SocialItem: React.FC<SocialItemProps> = ({ label, code, icon }) => {
   return (
     <Link
       href="#"
       className="flex items-center gap-3 rounded-xl border border-divider bg-default-50 p-3 transition-all hover:border-primary/50 hover:shadow-md"
     >
+      {/* Renders either an icon or a code for the social media link. 🎨 */}
       {icon ? (
         <MdMail className="text-lg text-foreground/60" />
       ) : (
@@ -137,6 +155,7 @@ const SocialItem: React.FC<SocialItemProps> = ({ label, code, icon }) => {
         </span>
       )}
 
+      {/* Renders the label for the social media link. 📝 */}
       <span className="text-sm font-semibold text-foreground/70">{label}</span>
     </Link>
   );

@@ -8,6 +8,7 @@ import { Metadata, Viewport } from 'next';
 import NextTopLoader from 'nextjs-toploader';
 import { Providers } from './providers';
 
+// metadata defines the metadata for the page. 📄
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,
@@ -19,6 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
+// viewport defines the viewport settings for the page. 📱
 export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'white' },
@@ -26,6 +28,12 @@ export const viewport: Viewport = {
   ],
 };
 
+/**
+ * RootLayout is the root layout for the entire application.
+ * It wraps all pages and provides a consistent layout.
+ * @param {React.ReactNode} children The children to render.
+ * @returns {JSX.Element} The rendered RootLayout component.
+ */
 export default function RootLayout({
   children,
 }: {
@@ -41,11 +49,13 @@ export default function RootLayout({
           fontMono.variable
         )}
       >
+        {/* NextTopLoader is a progress bar that shows at the top of the page. */}
         <NextTopLoader
           showSpinner={false}
           color="hsl(var(--heroui-primary))"
           shadow="0 0 12px hsl(var(--heroui-primary))"
         />
+        {/* Providers wrap the entire application and provide context. */}
         <Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
           <div className="relative flex flex-col min-h-screen">
             <Navbar />

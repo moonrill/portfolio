@@ -1,3 +1,9 @@
+/**
+ * BlogLayout is the layout for the blog section.
+ * It centers the content and provides some padding.
+ * @param {React.ReactNode} children The children to render.
+ * @returns {JSX.Element} The rendered BlogLayout component.
+ */
 export default function BlogLayout({
   children,
 }: {

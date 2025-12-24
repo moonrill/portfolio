@@ -15,6 +15,11 @@ import { ThemeSwitch } from '@/components/theme-switch';
 import { siteConfig } from '@/config/site';
 import { MdTerminal } from 'react-icons/md';
 
+/**
+ * Navbar is the main navigation bar for the application.
+ * It displays the brand, navigation links, a theme switch, and a mobile menu.
+ * @returns {JSX.Element} The rendered Navbar component.
+ */
 export const Navbar = () => {
   return (
     <HeroUINavbar
@@ -23,6 +28,7 @@ export const Navbar = () => {
       className="border-b border-zinc-100 dark:border-zinc-700/50 backdrop-blur-md bg-background-light/80"
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+        {/* The brand logo and name. 🎨 */}
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink className="flex items-center gap-3" href="/">
             <div className="flex items-center justify-center size-10 rounded-full bg-primary/10">
@@ -35,6 +41,7 @@ export const Navbar = () => {
         </NavbarBrand>
       </NavbarContent>
 
+      {/* The main navigation links. 🔗 */}
       <NavbarContent justify="center">
         <ul className="hidden lg:flex gap-6 justify-center ml-2">
           {siteConfig.navItems.map((item) => (
@@ -72,6 +79,7 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
+      {/* The right side of the navbar, with the theme switch and a "Hire Me" button. 🌓 */}
       <NavbarContent
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
@@ -95,11 +103,13 @@ export const Navbar = () => {
         </NavbarItem>
       </NavbarContent>
 
+      {/* The mobile menu toggle and theme switch. 📱 */}
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
 
+      {/* The mobile menu. 📝 */}
       <NavbarMenu>
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
