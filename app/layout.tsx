@@ -3,6 +3,7 @@ import { Navbar } from '@/components/layout/navbar';
 import { fontManrope, fontMono } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import '@/styles/globals.css';
+import { Analytics } from '@vercel/analytics/next';
 import clsx from 'clsx';
 import { Metadata, Viewport } from 'next';
 import NextTopLoader from 'nextjs-toploader';
@@ -65,6 +66,9 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
+
+        {/* VERCEL ANALYTICS */}
+        <Analytics />
       </body>
     </html>
   );
