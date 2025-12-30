@@ -4,6 +4,7 @@ import { fontManrope, fontMono } from '@/config/fonts';
 import { siteConfig } from '@/config/site';
 import '@/styles/globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import clsx from 'clsx';
 import { Metadata, Viewport } from 'next';
 import NextTopLoader from 'nextjs-toploader';
@@ -69,6 +70,9 @@ export default function RootLayout({
 
         {/* VERCEL ANALYTICS */}
         <Analytics />
+
+        {/* VERCEL SPEED INSIGHTS */}
+        <SpeedInsights />
       </body>
     </html>
   );
